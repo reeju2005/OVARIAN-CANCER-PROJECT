@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ovarian Cancer Detection Software</title>
+    <style>
+        body {
+            background-image: url("static/BG.jpg");
+            background-size: cover;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #000;
+        }
+        h1 {
+            color: black;
+            text-align: center;
+        }
+        form {
+            text-align: center;
+        }
+        .result {
+            text-align: center;
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+        .error {
+            color: red;
+            text-align: center;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ovarian Cancer Detection Software</h1>
+
+    <pre style="text-align:center;">
+Ovarian cancer ranks as the 5th leading cause of cancer-related deaths among women. 
+It is known as the 'Silent Killer' due to nonspecific early symptoms, which is often why it is detected late. 
+70% of the cases are detected at an advanced stage. 
+This software successfully identifies early stage ovarian cancer with high sensitivity & low false positives.
+    </pre>
+
+    <!-- Form to input data -->
+    <form method="post" action="{{ url_for('home') }}">
+        <label>AGE: <input type="text" name="a" placeholder="AGE" required></label><br><br>
+        <label>ALBUMIN: <input type="text" name="b" placeholder="ALB" required></label><br><br>
+        <label>ASPARTATE AMINOTRANSFERASE: <input type="text" name="c" placeholder="AST" required></label><br><br>
+        <label>CA125: <input type="text" name="d" placeholder="CA125" required></label><br><br>
+        <label>HUMAN EPIDIDYMIS PROTEIN 4: <input type="text" name="e" placeholder="HE4" required></label><br><br>
+        <label>INDIRECT BILIRUBIN: <input type="text" name="f" placeholder="IBIL" required></label><br><br>
+        <label>LYMPHOCYTE COUNT: <input type="text" name="g" placeholder="LYM" required></label><br><br>
+        <label>NEUTROPHIL RATIO: <input type="text" name="h" placeholder="NEU" required></label><br><br>
+        <label>PLATELET COUNT: <input type="text" name="i" placeholder="PLT" required></label><br><br>
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if error %}
+        <div class="error">
+            <p>{{ error }}</p>
+        </div>
+    {% endif %}
+
+    {% if data is not none %}
+        <div class="result">
+            {% if data[0] == 0 %}
+                <p style="color: red;">Prediction: You have Ovarian Cancer.</p>
+            {% else %}
+                <p style="color: green;">Prediction: You have a benign tumor.</p>
+            {% endif %}
+        </div>
+    {% endif %}
+</body>
+</html>
