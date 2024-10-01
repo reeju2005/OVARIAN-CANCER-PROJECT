@@ -1,2 +1,2 @@
-# OVARIAN-CANCER-PROJECT
-Creating a software for the early detection of ovarian cancer.
+# deploy-ml-model-flask
+ deploy your ml model using flask
