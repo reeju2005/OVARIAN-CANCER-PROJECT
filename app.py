@@ -31,5 +31,11 @@ def home():
 
     return render_template('index.html', data=pred, error=error_message)
 
+@app.route("/api")
+def api():
+    return "Hello, API!"
+
 if __name__ == "__main__":
     app.run(debug=True)
+
+
