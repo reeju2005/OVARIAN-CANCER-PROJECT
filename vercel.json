@@ -1,0 +1,6 @@
+{
+
+    "builds": [{ "src": "OCFLASK_new.py", "use": "@vercel/python" }],
+    "routes": [{ "src": "/( .* )", "dest": "OCFLASK_new.py" }]
+
+}
